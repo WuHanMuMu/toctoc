@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# https://doc.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+class ToctocItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    BañosDesde = scrapy.Field()
+    BañosHasta = scrapy.Field()
+    BañosTooltip = scrapy.Field()
+    Cantidad = scrapy.Field()
+    CantidadImagenes = scrapy.Field()
+    Comuna = scrapy.Field()
+    DormitoriosDesde = scrapy.Field()
+    DormitoriosHasta = scrapy.Field()
+    DormitoriosTooltip = scrapy.Field()
+    EsBienRaiz = scrapy.Field()
+    EsCliente = scrapy.Field()
+    EsDelCirculoCorredores = scrapy.Field()
+    EsFavorita = scrapy.Field()
+    EsFavorito = scrapy.Field()
+    EsNueva = scrapy.Field()
+    EsUltimaVenta = scrapy.Field()
+    EsUsada = scrapy.Field()
+    FechaPublicacion = scrapy.Field()
+    Id = scrapy.Field()
+    IdBienRaizResumenCoordenada = scrapy.Field()
+    IdCoordenada = scrapy.Field()
+    IdPropiedad = scrapy.Field()
+    IdTipoMoneda = scrapy.Field()
+    IdTipoOperacion = scrapy.Field()
+    IdTipoOperacionFamilia = scrapy.Field()
+    IdTipoOperacionPredominante = scrapy.Field()
+    IdTipoPropiedadFamilia = scrapy.Field()
+    Imagen = scrapy.Field()
+    ImagenPrincipal = scrapy.Field()
+    Latitud = scrapy.Field()
+    Longitud = scrapy.Field()
+    MensajeFotos = scrapy.Field()
+    MetrajeTooltip = scrapy.Field()
+    MetrosConstruidos = scrapy.Field()
+    MetrosTerraza = scrapy.Field()
+    MetrosTerreno = scrapy.Field()
+    MetrosUtiles = scrapy.Field()
+    OrdenProyecto = scrapy.Field()
+    PrecioDesde = scrapy.Field()
+    PrecioDespliegue = scrapy.Field()
+    PrecioHasta = scrapy.Field()
+    PrecioPesos = scrapy.Field()
+    PrecioUF = scrapy.Field()
+    RutaContenido = scrapy.Field()
+    RutaLogo = scrapy.Field()
+    RutaLogoResultado = scrapy.Field()
+    SuperficieConstruidaDesde = scrapy.Field()
+    SuperficieConstruidaHasta = scrapy.Field()
+    SuperficieTerrazaDesde = scrapy.Field()
+    SuperficieTerrazaHasta = scrapy.Field()
+    SuperficieTerrenoDesde = scrapy.Field()
+    SuperficieTerrenoHasta = scrapy.Field()
+    SuperficieUtilDesde = scrapy.Field()
+    SuperficieUtilHasta = scrapy.Field()
+    Tiene360 = scrapy.Field()
+    TieneMultimedia = scrapy.Field()
+    TienePropietario = scrapy.Field()
+    TieneRolAsociado = scrapy.Field()
+    TipoOperacion = scrapy.Field()
+    Titulo = scrapy.Field()
+    TituloToolTip = scrapy.Field()
+    UrlFicha = scrapy.Field()
+
+
