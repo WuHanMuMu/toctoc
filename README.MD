@@ -21,6 +21,4 @@
     maybe you can find them in the chrome devtools and get the params
     then edit spiders/csvfeed.py  line 90
     to what you want
-6. the params dont work ? i have a try ,but worked
-    maybe when you run the crawl ,there is an another process using it
-    so the change was rejected
+6. the params dont work ? there was something with the params
