@@ -16,3 +16,11 @@
         then run scrapy crawl toctoc -a text=thewordyouwanttosearch -o output.csv
         there will be an another file named 'update.csv' include old and new info
     -o  the file you want to output
+5.params
+    there are many params in the site, i can not list them all
+    maybe you can find them in the chrome devtools and get the params
+    then edit spiders/csvfeed.py  line 90
+    to what you want
+6. the params dont work ? i have a try ,but worked
+    maybe when you run the crawl ,there is an another process using it
+    so the change was rejected

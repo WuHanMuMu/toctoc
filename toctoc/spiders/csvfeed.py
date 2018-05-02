@@ -21,7 +21,7 @@ class CsvfeedSpider(scrapy.Spider):
         #     self.start_urls = ['https://www.toctoc.com/api/mapa/getpropiedades']
 
     def start_requests(self):
-        return [scrapy.Request("https://www.toctoc.com/search/index2/?dormitorios=0&banos=0&superficieDesde=0&superficieHasta=0&precioDesde=0&precioHasta=0&moneda=UF&tipoArriendo=true&tipoVentaUsado=true&tipoVentaNuevo=true&tipoUltimasVentas=false&casaDepto=undefined&ordenarPorMoneda=UFCLP&ordenarDesc=false&ordernarPorFechaPublicacion=false&ordernarPorSuperficie=false&ordernarPorPrecio=false&pagina=1&textoBusqueda=&tipoVista=lista&viewport=&region=&idle=false&buscando=true&vuelveBuscar=false&dibujaPoligono=false&resetMapa=true&animacion=false&idZonaHomogenea=0&esPrimeraBusqueda=false",
+        return [scrapy.Request("https://www.toctoc.com/search/index2/",
                                callback=self.parse)]
 
     def parse(self, response):
