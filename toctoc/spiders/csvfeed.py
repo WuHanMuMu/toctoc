@@ -3,7 +3,7 @@ import scrapy
 import re
 import json
 from ..items import ToctocItem
-
+import requests
 
 class CsvfeedSpider(scrapy.Spider):
     name = 'toctoc'
@@ -31,6 +31,13 @@ class CsvfeedSpider(scrapy.Spider):
         req = scrapy.Request(self.api_,headers=headers,body=json.dumps(req_data),callback=self.parseJson,method='POST')
         req.meta['headers'] = headers
         req.meta['first'] = True
+        # self.log(req_data)
+        # self.log('====>' + json.dumps(req_data))
+        # r = requests.post(self.api_,json=req_data,headers=headers)
+        # r.encoding= "utf-8"
+        # self.log(r.text)
+        # import time 
+        # time.sleep(10)
         yield req
 
     def parseSetCookie(self, s):
@@ -46,7 +53,7 @@ class CsvfeedSpider(scrapy.Spider):
             "accept": "application/json, text/javascript, */*; q=0.01",
             "accept-encoding": "gzip, deflate, br",
             "content-type": "application/json",
-            "cookie": '; optimizelyEndUserId=oeu1525136541039r0.7623129735413938;optimizelySegments=%7B%222204271535%22%3A%22gc%22%2C%222215970531%22%3A%22False%22%2C%222232940041%22%3A%22referral%22%7D; optimizelyBuckets=%7B%7D ; optimizelyBuckets=%7B%7D; _ga=GA1.2.1482230272.1525136541; _gid=GA1.2.1051418429.1525136541; __insp_wid=2107690165; __insp_nv=True; __insp_targlpu=aHR0cHM6Ly93d3cudG9jdG9jLmNvbS9zZWFyY2gvaW5kZXgyLz9kb3JtaXRvcmlvcz0wJmFtcDtiYW5vcz0wJmFtcDtzdXBlcmZpY2llRGVzZGU9MCZhbXA7c3VwZXJmaWNpZUhhc3RhPTAmYW1wO3ByZWNpb0Rlc2RlPTAmYW1wO3ByZWNpb0hhc3RhPTAmYW1wO21vbmVkYT1VRiZhbXA7dGlwb0FycmllbmRvPWZhbHNlJmFtcDt0aXBvVmVudGFVc2Fkbz10cnVlJmFtcDt0aXBvVmVudGFOdWV2bz1mYWxzZSZhbXA7dGlwb1VsdGltYXNWZW50YXM9ZmFsc2UmYW1wO2Nhc2FEZXB0bz0xJmFtcDtvcmRlbmFyUG9yTW9uZWRhPVVGQ0xQJmFtcDtvcmRlbmFyRGVzYz1mYWxzZSZhbXA7b3JkZXJuYXJQb3JGZWNoYVB1YmxpY2FjaW9uPWZhbHNlJmFtcDtvcmRlcm5hclBvclN1cGVyZmljaWU9ZmFsc2UmYW1wO29yZGVybmFyUG9yUHJlY2lvPWZhbHNlJmFtcDtwYWdpbmE9MSZhbXA7dGV4dG9CdXNxdWVkYT1wcm92aWRlbmNpYSZhbXA7dGlwb1Zpc3RhPWxpc3RhJmFtcDt2aWV3cG9ydD0tMzQuMjg3ODE0OCUyQy03MS43MDg4MTAyMDAwMDAwMiUyQy0zMi45MTk0NTElMkMtNjkuNzY4OTk0MzAwMDAwMDMmYW1wO2NvbXVuYT1Qcm92aWRlbmNpYSZhbXA7cmVnaW9uPVJlZ2klQzMlQjNuJTIwTWV0cm9wb2xpdGFuYSZhbXA7YXRyaWJ1dG9zPSZhbXA7aWRsZT1mYWxzZSZhbXA7em9vbT0xMyZhbXA7YnVzY2FuZG89ZmFsc2UmYW1wO3Z1ZWx2ZUJ1c2Nhcj1mYWxzZSZhbXA7ZGlidWphUG9saWdvbm89dHJ1ZSZhbXA7cmVzZXRNYXBhPXRydWUmYW1wO2FuaW1hY2lvbj1mYWxzZSZhbXA7aWRab25hSG9tb2dlbmVhPTAmYW1wO2VzUHJpbWVyYUJ1c3F1ZWRhPWZhbHNl; __insp_targlpt=QnVzY2FyIHkgY29tcHJhciBjYXNhIHBvciBtYXBhIGVuIFRvYyBUb2M%3D; __insp_norec_sess=True; NPS_93546e30_last_seen=1525137064458; ; mp_29ae90688062e4e2e6d80b475cef8685_mixpanel=%7B%22distinct_id%22%3A%20%221631939188a5a0-0f03580850d109-3961430f-1fa400-1631939188baf6%22%2C%22%24initial_referrer%22%3A%20%22https%3A%2F%2Fwww.freelancer.com%2Fdashboard%2F%22%2C%22%24initial_referring_domain%22%3A%20%22www.freelancer.com%22%7D; __insp_slim=1525137281382',
+            "cookie": '; optimizelyEndUserId=oeu1525309397265r0.9540037691067265;optimizelySegments=%7B%222204271535%22%3A%22gc%22%2C%222215970531%22%3A%22false%22%2C%222232940041%22%3A%22direct%22%7D; optimizelyBuckets=%7B%7D ; optimizelyBuckets=%7B%7D; _ga=GA1.2.1482230272.1525136541; _gid=GA1.2.1051418429.1525136541; __insp_wid=2107690165; __insp_nv=True; __insp_targlpu=aHR0cHM6Ly93d3cudG9jdG9jLmNvbS9zZWFyY2gvaW5kZXgyLz9kb3JtaXRvcmlvcz0wJmFtcDtiYW5vcz0wJmFtcDtzdXBlcmZpY2llRGVzZGU9MCZhbXA7c3VwZXJmaWNpZUhhc3RhPTAmYW1wO3ByZWNpb0Rlc2RlPTAmYW1wO3ByZWNpb0hhc3RhPTAmYW1wO21vbmVkYT1VRiZhbXA7dGlwb0FycmllbmRvPWZhbHNlJmFtcDt0aXBvVmVudGFVc2Fkbz10cnVlJmFtcDt0aXBvVmVudGFOdWV2bz1mYWxzZSZhbXA7dGlwb1VsdGltYXNWZW50YXM9ZmFsc2UmYW1wO2Nhc2FEZXB0bz0xJmFtcDtvcmRlbmFyUG9yTW9uZWRhPVVGQ0xQJmFtcDtvcmRlbmFyRGVzYz1mYWxzZSZhbXA7b3JkZXJuYXJQb3JGZWNoYVB1YmxpY2FjaW9uPWZhbHNlJmFtcDtvcmRlcm5hclBvclN1cGVyZmljaWU9ZmFsc2UmYW1wO29yZGVybmFyUG9yUHJlY2lvPWZhbHNlJmFtcDtwYWdpbmE9MSZhbXA7dGV4dG9CdXNxdWVkYT1wcm92aWRlbmNpYSZhbXA7dGlwb1Zpc3RhPWxpc3RhJmFtcDt2aWV3cG9ydD0tMzQuMjg3ODE0OCUyQy03MS43MDg4MTAyMDAwMDAwMiUyQy0zMi45MTk0NTElMkMtNjkuNzY4OTk0MzAwMDAwMDMmYW1wO2NvbXVuYT1Qcm92aWRlbmNpYSZhbXA7cmVnaW9uPVJlZ2klQzMlQjNuJTIwTWV0cm9wb2xpdGFuYSZhbXA7YXRyaWJ1dG9zPSZhbXA7aWRsZT1mYWxzZSZhbXA7em9vbT0xMyZhbXA7YnVzY2FuZG89ZmFsc2UmYW1wO3Z1ZWx2ZUJ1c2Nhcj1mYWxzZSZhbXA7ZGlidWphUG9saWdvbm89dHJ1ZSZhbXA7cmVzZXRNYXBhPXRydWUmYW1wO2FuaW1hY2lvbj1mYWxzZSZhbXA7aWRab25hSG9tb2dlbmVhPTAmYW1wO2VzUHJpbWVyYUJ1c3F1ZWRhPWZhbHNl; __insp_targlpt=QnVzY2FyIHkgY29tcHJhciBjYXNhIHBvciBtYXBhIGVuIFRvYyBUb2M%3D; __insp_norec_sess=True; NPS_93546e30_last_seen=1525137064458; ; mp_29ae90688062e4e2e6d80b475cef8685_mixpanel=%7B%22distinct_id%22%3A%20%221631939188a5a0-0f03580850d109-3961430f-1fa400-1631939188baf6%22%2C%22%24initial_referrer%22%3A%20%22https%3A%2F%2Fwww.freelancer.com%2Fdashboard%2F%22%2C%22%24initial_referring_domain%22%3A%20%22www.freelancer.com%22%7D; __insp_slim=1525309965688',
             "origin": "https://www.toctoc.com",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36",
             "x-requested-with": "XMLHttpRequest",
@@ -75,6 +82,7 @@ class CsvfeedSpider(scrapy.Spider):
                                      method='POST')
                 req.meta['headers'] = headers
                 req.meta['first'] = False
+              
                 yield req
         houseInfo = data['Propiedades']
         for i in houseInfo:
@@ -86,62 +94,8 @@ class CsvfeedSpider(scrapy.Spider):
         return item
 
     def getPayLoad(self):
-        text = self.search_word or ''
-        return {"dormitorios": 0,
-                "banos": 0,
-                "superficieDesde": 0,
-                "superficieHasta": 0,
-                "precioDesde": 0,
-                "precioHasta": 0,
-                "moneda": "UF",
-                "tipoArriendo": True,
-                "tipoVentaUsado": True,
-                "tipoVentaNuevo": True,
-                "tipoUltimasVentas": False,
-                "casaDepto": "undefined",
-                "ordenarPorMoneda": "UFCLP",
-                "ordenarDesc": False,
-                "ordernarPorFechaPublicacion": False,
-                "ordernarPorSuperficie": False,
-                "ordernarPorPrecio": False,
-                "pagina": 1,
-                "textoBusqueda": text,
-                "tipoVista": "lista",
-                "viewport": "-33.6741885,-70.83288190000002,-33.2713874,-70.4267807",
-                "comuna": "",
-                 "region": "Región Metropolitana",
-                "idle": False, "zoom": 14, "buscando": True, "vuelveBuscar": False,
-                 "dibujaPoligono": True, "resetMapa": True, "animacion": False, "idZonaHomogenea": 0,
-                 "esPrimeraBusqueda": False}
-        # return {
-        #     "dormitorios": "0",
-        #     "banos": "0",
-        #     "superficieDesde": "0",
-        #     "superficieHasta": "0",
-        #     "precioDesde": "0",
-        #     "precioHasta": "0",
-        #     "moneda": "UF",
-        #     "tipoArriendo": "True",
-        #     "tipoVentaUsado": "True",
-        #     "tipoVentaNuevo": "False",
-        #     "tipoUltimasVentas": "False",
-        #     "casaDepto": "undefined",
-        #     "ordenarPorMoneda": "UFCLP",
-        #     "ordenarDesc": "False",
-        #     "ordernarPorFechaPublicacion": "False",
-        #     "ordernarPorSuperficie": "False",
-        #     "ordernarPorPrecio": "False",
-        #     "pagina": "1",
-        #     "textoBusqueda": text,
-        #     "tipoVista": "lista",
-        #     "viewport": "",
-        #     "region": "",
-        #     "idle": "False",
-        #     "buscando": "False",
-        #     "vuelveBuscar": "False",
-        #     "dibujaPoligono": "False",
-        #     "resetMapa": "True",
-        #     "animacion": "False",
-        #     "idZonaHomogenea": "0",
-        #     "esPrimeraBusqueda": "False"
-        # }
+        # text = self.search_word or ''
+        # return {"dormitorios":"0","banos":"0","superficieDesde":"0","superficieHasta":"0","precioDesde":"0","precioHasta":"0","moneda":"UF","tipoArriendo":"false","tipoVentaUsado":"true","tipoVentaNuevo":"true","tipoUltimasVentas":"false","casaDepto":"undefined","ordenarPorMoneda":"UFCLP","ordenarDesc":"false","ordernarPorFechaPublicacion":"false","ordernarPorSuperficie":"false","ordernarPorPrecio":"false","pagina":"1","textoBusqueda":"","tipoVista":"lista","viewport":"-32.931418602037425,-71.51345443318519,-32.91926108845345,-71.50620174000892","comuna":"","region":"","atributos":"","idle":"true","zoom":"16","buscando":"false","vuelveBuscar":"false","dibujaPoligono":"false","resetMapa":"false","animacion":"false","idZonaHomogenea":"0","esPrimeraBusqueda":"false"}
+        with open("./param.txt",'r') as file:
+            s = file.read()
+            return json.loads(s)
