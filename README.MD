@@ -21,4 +21,11 @@
     maybe you can find them in the chrome devtools and get the params
     then edit spiders/csvfeed.py  line 90
     to what you want
-6. the params dont work ? there was something with the params
+6. sorry about the carelessness . 
+    i have a stupid way to solve this problem .
+    open you chrome devtools 
+    copy your request payload into the param.txt 
+    like this 
+    ![chrome devtools](https://github.com/WuHanMuMu/toctoc/raw/master/1.png)
+    then run 
+        scrapy crawl toctoc -o x.csv
