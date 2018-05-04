@@ -75,7 +75,7 @@ class CsvfeedSpider(scrapy.Spider):
         totalPage = data['TotalPaginas']
         if totalPage > 1 and response.meta['first']:
             headers = response.meta['headers']
-            for i in range(1,int(totalPage) + 1):
+            for i in range(2,int(totalPage) + 1):
                 payload = self.getPayLoad()
                 payload['pagina'] = i
                 req = scrapy.Request(self.api_, headers=headers, body=json.dumps(payload), callback=self.parseJson,
